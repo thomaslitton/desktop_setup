@@ -1,0 +1,10 @@
+---
+
+- hosts:
+    - localhost
+  vars:
+    test: test
+  roles:
+    - chrome
+    - idea
+    - ruby

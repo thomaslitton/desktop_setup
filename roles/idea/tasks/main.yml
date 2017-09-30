@@ -1,0 +1,41 @@
+---
+
+- name: Find latest version
+  uri:
+    url: "https://data.services.jetbrains.com/products/releases?code=IIU%2CIIC&latest=true&type=release"
+    return_content: yes
+    validate_certs: no
+    body_format: json
+  register: intellij_releases_response
+  tags: ["packages","intellij"]
+
+- set_fact:
+    intellij_version: "{{ intellij_releases_response.json.IIU.0.version }}"
+  tags: ["packages","intellij"]
+
+- name: Download intellij
+  get_url: url={{intellij_url}} dest={{intellij_tmp}}
+  tags: ["packages","intellij"]
+
+- name: Ensure installation directory
+  file:
+    state=directory
+    mode=0755
+    dest={{intellij_install_dir}}
+  tags: ["packages","intellij"]
+
+- name: Unarchive intellij
+  unarchive:
+    copy=no
+    src={{intellij_tmp}}
+    dest={{intellij_install_dir}}
+  tags: ["packages","intellij"]
+
+- name: Retreive intellij dir name
+  command: ls -t {{intellij_install_dir}}
+  register: result_intellij_folder_name
+  tags: ["configuration","intellij"]
+
+  #- name: Ensure intellij shortcut is present
+  #template: src=intellij.desktop.j2 dest=/usr/share/applications/intellij.desktop
+  #tags: ["configuration","intellij"]

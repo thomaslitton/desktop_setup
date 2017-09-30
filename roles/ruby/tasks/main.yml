@@ -1,0 +1,19 @@
+---
+- name: install the Development tools package group
+  dnf:
+    name: '@C Development Tools and Libraries'
+    state: present
+
+- name: Install ruby, rubygems, and development tools.
+  dnf: 
+    name: "{{ item }}" 
+    state: present
+  with_items:
+    - ruby
+    - ruby-devel
+
+- name: Install Bundler.
+  gem: 
+    name: bundler 
+    state: present 
+    user_install: no      
