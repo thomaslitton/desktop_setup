@@ -1,0 +1,13 @@
+---
+
+# vagrant
+vagrant_version: "2.0.0"
+vagrant_tmp_dir: "/opt/ansible_downloads/"
+vagrant_tmp_rpm: "{{vagrant_tmp_dir}}/vagrant_{{vagrant_version}}.rpm"
+
+vagrant_url_rpm: "https://releases.hashicorp.com/vagrant/{{vagrant_version}}/vagrant_{{vagrant_version}}_{{ansible_architecture}}.rpm"
+
+# Vault
+vault_version: 0.8.3
+vault_zip_url: "https://releases.hashicorp.com/vault/{{vault_version}}/vault_{{vault_version}}_linux_amd64.zip"
+vault_dest: "/tmp/vault_{{vault_version}}_linux_amd64.zip"

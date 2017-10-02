@@ -1,0 +1,27 @@
+---
+
+# Vagrant
+
+- name: Ensure temp download directory exist
+  file: state=directory path={{vagrant_tmp_dir}}
+  tags: ["packages","vagrant"]
+
+- name: Download vagrant
+  get_url: url={{ vagrant_url_rpm }} dest={{vagrant_tmp_rpm}}
+
+- name: Install vagrant
+  dnf: name={{vagrant_tmp_rpm}}
+
+# Vault
+
+- name: Download Vault
+  get_url:
+    url: "{{ vault_zip_url }}"
+    dest: "{{ vault_dest }}"
+
+- name: Unarchive Vault
+  unarchive:
+    src: "{{ vault_dest }}"
+    dest: "/usr/local/bin"
+    creates: "/usr/local/bin/vault"
+

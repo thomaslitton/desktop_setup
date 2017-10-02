@@ -1,0 +1,57 @@
+---
+
+- name: Ensure temp download directory exist
+  file:
+    path: "{{monitoring_root}}"
+    owner: "{{ansible_user_id}}"
+    state: directory
+
+# Note: I couldn't get this to work without prompting everytime.  Might need to run command with sudo to the correct user.
+- name: Checkout src
+  git:
+    repo: 'https://github.com/CenturyLinkCloud/{{item}}.git'
+    dest: "{{monitoring_root}}/{{item}}"
+    key_file: /root/.ssh/github
+    accept_hostkey: yes
+    clone: yes
+    update: no
+  become: yes
+  become_user: "{{ansible_user_id}}"
+  with_items:
+    - mon-infrastructure
+    - mon-docker-images
+    - mon-agent
+    - mon-agent-repo
+    - mon-sensu
+    - mon-ui
+    - mon-testing
+    - mon-agent-api
+    - mon-policy-config-api
+    - mon-metrics-api
+    - mon-events-api
+    - mon-api-lib
+    - mon-sensu-extensions-wizardvan
+    - mon-sensu-extensions-influxdb
+    - mon-sensu-plugins-snmp
+
+- name: Change project dir owner
+  file:
+    path: "{{monitoring_root}}/{{item}}"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+  with_items:
+    - mon-infrastructure
+    - mon-docker-images
+    - mon-agent
+    - mon-agent-repo
+    - mon-sensu
+    - mon-ui
+    - mon-testing
+    - mon-agent-api
+    - mon-policy-config-api
+    - mon-metrics-api
+    - mon-events-api
+    - mon-api-lib
+    - mon-sensu-extensions-wizardvan
+    - mon-sensu-extensions-influxdb
+    - mon-sensu-plugins-snmp

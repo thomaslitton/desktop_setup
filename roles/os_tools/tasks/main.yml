@@ -1,0 +1,37 @@
+---
+
+- name: install vim
+  dnf:
+    name: vim
+    state: latest
+
+- name: install gnome-tweak-tool
+  dnf:
+    name: gnome-tweak-tool
+    state: latest    
+
+- name: install keepass
+  dnf:
+    name: keepass
+    state: latest
+
+- name: install jq
+  dnf:
+    name: jq
+    state: latest
+
+
+- name: Install openVPN
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - NetworkManager-openvpn
+    - NetworkManager-openvpn-gnome
+    - openvpn
+
+- name: copy bash profile
+  copy:
+    src: .bash_profile
+    dest: ~{{ansible_user_id}}/.bash_profile
+  become: false

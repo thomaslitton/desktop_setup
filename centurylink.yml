@@ -5,6 +5,9 @@
   vars:
     test: test
   roles:
-    - chrome
-    - idea
-    - ruby
+#    - os_tools
+#    - chrome
+#    - develop_tools
+#    - ruby
+#    - idea
+    - monitoring
