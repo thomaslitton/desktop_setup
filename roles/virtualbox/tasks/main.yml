@@ -30,3 +30,4 @@
 
 - name: Rebuild kernel moduels
   command: /usr/lib/virtualbox/vboxdrv.sh setup
+  creates: "/lib/modules/{{ansible_kernel}}/misc/vboxdrv.ko"

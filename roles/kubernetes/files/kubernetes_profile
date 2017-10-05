@@ -1,0 +1,35 @@
+kapp() {
+  kubectl get pods -l app=$1 -o name | awk -F "/" '{print $2}'
+}
+
+keditd() {
+  kubectl edit deployment $1
+}
+
+kls() {
+  kubectl get pods
+}
+
+klsw() {
+  kubectl get pods --watch
+}
+
+klogapi() {
+  if [ $1 == "-f" ] ; then
+    kubectl logs -f $(kapp $2) -c $2
+  else
+    kubectl logs $(kapp $1) -c $1
+  fi
+}
+
+klog() {
+  if [ $1 == "-f" ] ; then
+    kubectl logs -f $(kapp $2) -c log
+  else
+    kubectl logs $(kapp $1) -c log
+  fi
+}
+
+klogp() {
+  kubectl logs $@
+}

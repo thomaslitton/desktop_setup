@@ -16,4 +16,21 @@
   gem: 
     name: bundler 
     state: present 
-    user_install: no      
+    user_install: no
+
+-name: install common ruby deps
+  dnf:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - postgresql-devel
+    - patch
+    - libxml-devel
+    - zlib-devel
+    - readline-devel
+    - libyaml-devel
+    - openssl-devel
+    - autoconf automake
+    - libtool
+    - sqlite-devel
+

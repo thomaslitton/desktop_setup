@@ -1,0 +1,10 @@
+
+export DOCKER_CERT_PATH=
+export DOCKER_HOST=tcp://watcher0:2376
+export DOCKER_MACHINE_NAME=
+export DOCKER_TLS_VERIFY=
+export DOCKER_TOOLBOX_INSTALL_PATH=
+
+function dbl() {
+  docker build --tag registry.watcher.ctl.io:443/$1:local .;
+}

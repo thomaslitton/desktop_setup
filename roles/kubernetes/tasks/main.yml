@@ -1,4 +1,10 @@
 ---
+
+- name: install docker
+  dnf:
+    name: docker
+    state: latest
+
 - name: Fetch kubectl
   get_url:
     url: "{{ kubectl_download_url }}"

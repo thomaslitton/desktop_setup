@@ -1,0 +1,20 @@
+export EB_TOKEN="set token here"
+
+export AUTH_TOKEN=$EB_TOKEN
+export WORKSPACE='thomaslitton'
+export INSTANCE='MyPC'
+export MACHINE='MyPC'
+export WATCHER_REG_URL='https://api.local.watcher/agents'
+
+
+list_hidden_checks() {
+  kubectl exec $(kapp policy-api) -c policy-api bundle exec rake list_hidden_checks
+}
+
+hide_check() {
+  kubectl exec $(kapp policy-api) -c policy-api bundle exec rake hide_check_type[$1]
+}
+
+unhide_check() {
+  kubectl exec $(kapp policy-api) -c policy-api bundle exec rake unhide_check_type[$1]
+}

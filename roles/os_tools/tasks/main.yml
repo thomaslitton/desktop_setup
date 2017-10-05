@@ -20,6 +20,11 @@
     name: jq
     state: latest
 
+- name: install jq
+  dnf:
+    name: bonnie++
+    state: latest
+
 
 - name: Install openVPN
   dnf:
@@ -33,5 +38,15 @@
 - name: copy bash profile
   copy:
     src: .bash_profile
-    dest: ~{{ansible_user_id}}/.bash_profile
+    dest: "~{{ansible_user_id}}/.bash_profile"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
   become: false
+
+- name: ensure profile.d dir exists
+  file:
+    path: "~{{ansible_user_id}}/.bash_profile.d"
+    state: directory
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+

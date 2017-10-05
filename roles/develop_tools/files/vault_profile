@@ -1,0 +1,2 @@
+export VAULT_ADDR="https://vault.monitoring.ctl.io:8200/"
+export VAULT_GITHUB_TOKEN="replace with key"

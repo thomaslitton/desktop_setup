@@ -1,5 +1,22 @@
 ---
 
+# Local Stack Config
+- lineinfile:
+    path: /etc/hosts
+    regexp: 'watcher0'
+    line: '192.168.99.90 watcher0 local.watcher api.local.watcher repo.local.watcher pkg.local.watcher nx.local.watcher rabbitmq mq0.local.watcher mq1.local.watcher'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: copy bash profile for docker profile
+  copy:
+    src: docker_profile
+    dest: "~{{ansible_user_id}}/.bash_profile.d/docker_profile"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+  become: false
+
 - name: Ensure temp download directory exist
   file:
     path: "{{monitoring_root}}"

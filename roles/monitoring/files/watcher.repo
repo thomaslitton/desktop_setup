@@ -1,0 +1,5 @@
+[watcher]
+name=Watcher
+baseurl=https://pkg.watcher.ctl.io/rpm/el/7/$basearch
+enabled=1
+gpgcheck=0
