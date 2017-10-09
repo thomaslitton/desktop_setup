@@ -1,0 +1,7 @@
+nodejs_version: "v8.6.0"
+nodejs_tmp_dir: "/tmp/ansible_downloads/"
+nodejs_name: "node-{{nodejs_version}}-linux-x64"
+nodejs_tmp_dest: "{{nodejs_tmp_dir}}/{{nodejs_name}}.tar.xz"
+
+nodejs_url_zip: "https://nodejs.org/dist/{{nodejs_version}}/node-{{nodejs_version}}-linux-x64.tar.xz"
+nodejs_install_dir: "/opt/nodejs/"

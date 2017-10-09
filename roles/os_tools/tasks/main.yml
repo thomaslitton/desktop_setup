@@ -35,6 +35,15 @@
     - NetworkManager-openvpn-gnome
     - openvpn
 
+- name: Install gpast
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - gpaste
+    - gpaste-ui
+    - gnome-shell-extension-gpaste
+
 - name: copy bash profile
   copy:
     src: .bash_profile

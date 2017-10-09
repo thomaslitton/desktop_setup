@@ -1,0 +1,39 @@
+---
+
+- name: Ensure tmp directory
+  file:
+    state: directory
+    mode: 0755
+    dest: "{{nodejs_tmp_dir}}"
+
+- name: download nodejs
+  get_url:
+    url: "{{nodejs_url_zip}}"
+    dest: "{{nodejs_tmp_dest}}"
+
+- name: Ensure installation directory
+  file:
+    state: directory
+    mode: 0755
+    dest: "{{nodejs_install_dir}}"
+
+- name: Unarchive nodejs
+  unarchive:
+    copy: no
+    src: "{{nodejs_tmp_dest}}"
+    dest: "{{nodejs_install_dir}}"
+
+- name: copy bash profile for nodejs profile
+  copy:
+    src: nodejs_profile
+    dest: "~{{ansible_user_id}}/.bash_profile.d"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+    force: no
+  become: false
+
+- name: Symlink current version
+  file:
+    src: "{{nodejs_install_dir}}/{{nodejs_name}}"
+    dest: "{{nodejs_install_dir}}/current"
+    state: link

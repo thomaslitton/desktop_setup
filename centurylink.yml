@@ -5,11 +5,12 @@
   vars:
     test: test
   roles:
-    - os_tools
+#    - os_tools
 #    - chrome
 #    - develop_tools
 #    - ruby
+    - nodejs
 #    - idea
 #     - virtualbox
-    - kubernetes
+#    - kubernetes
 #    - monitoring
