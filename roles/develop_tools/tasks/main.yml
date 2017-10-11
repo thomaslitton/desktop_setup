@@ -25,12 +25,13 @@
     dest: "/usr/local/bin"
     creates: "/usr/local/bin/vault"
 
-- name: copy bash profile for docker profile
+- name: copy bash profile for vault profile
   copy:
     src: vault_profile
     dest: ~{{ansible_user_id}}/.bash_profile.d
     owner: {{ansible_user_id}}
     group: {{ansible_user_id}}
+    mode: 0755
     force: no
   become: false
 

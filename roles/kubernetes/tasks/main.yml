@@ -10,3 +10,14 @@
     url: "{{ kubectl_download_url }}"
     dest: /usr/local/bin/kubectl
     mode: 0755
+
+
+- name: copy kube bash profile
+  copy:
+    src: kubernetes_profile
+    dest: "~{{ansible_user_id}}/.bash_profile.d/kubernetes_profile"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+    mode: 0755
+  become: false
+

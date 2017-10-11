@@ -15,6 +15,7 @@
     dest: "~{{ansible_user_id}}/.bash_profile.d/docker_profile"
     owner: "{{ansible_user_id}}"
     group: "{{ansible_user_id}}"
+    mode: 0755
   become: false
 
 - name: Ensure temp download directory exist

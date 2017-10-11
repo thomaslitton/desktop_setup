@@ -34,3 +34,12 @@
     - libtool
     - sqlite-devel
 
+- name: copy bash profile
+  copy:
+    src: ruby_profile
+    dest: "~{{ansible_user_id}}/.bash_profile.d/ruby_profile"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+    mode: 0755
+  become: false
+

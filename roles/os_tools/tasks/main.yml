@@ -50,6 +50,7 @@
     dest: "~{{ansible_user_id}}/.bash_profile"
     owner: "{{ansible_user_id}}"
     group: "{{ansible_user_id}}"
+    mode: 0755
   become: false
 
 - name: ensure profile.d dir exists
