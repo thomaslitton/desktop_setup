@@ -53,6 +53,14 @@
     mode: 0755
   become: false
 
+- name: Ensure bash_profile is sourced from .bashrc
+  lineinfile:
+    path: "~{{ansible_user_id}}/.bashrc"
+    regexp: 'bash_profile'
+    line: '. ~/.bash_profile'
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+
 - name: ensure profile.d dir exists
   file:
     path: "~{{ansible_user_id}}/.bash_profile.d"

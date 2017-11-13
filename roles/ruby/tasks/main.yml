@@ -4,13 +4,17 @@
     name: '@C Development Tools and Libraries'
     state: present
 
+# Easy win for installing latest ruby in the system
+# It will result in multiple versions of the same ruby from chruby
+# but this is more easily excessible
 - name: Install ruby, rubygems, and development tools.
-  dnf: 
-    name: "{{ item }}" 
+  dnf:
+    name: "{{ item }}"
     state: present
   with_items:
     - ruby
     - ruby-devel
+    - rubygem-json
 
 - name: Install Bundler.
   gem: 
@@ -18,7 +22,7 @@
     state: present 
     user_install: no
 
--name: install common ruby deps
+- name: install common ruby deps
   dnf:
     name: "{{item}}"
     state: latest
@@ -34,6 +38,19 @@
     - libtool
     - sqlite-devel
 
+- name: Download chruby repo config
+  get_url:
+    url: "https://copr.fedorainfracloud.org/coprs/postmodern/chruby/repo/fedora-26/postmodern-chruby-fedora-26.repo"
+    dest: "/etc/yum.repos.d/postmodern-chruby-fedora-26.repo"
+
+- name: Install chruby
+  dnf:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - chruby
+    - ruby-install
+
 - name: copy bash profile
   copy:
     src: ruby_profile
@@ -42,4 +59,22 @@
     group: "{{ansible_user_id}}"
     mode: 0755
   become: false
+
+- name: Install additional rubies
+  become: true
+  with_items:
+    - "2.3.5"
+  shell:
+    creates: "/opt/rubies/ruby-{{ item }}/bin/ruby"
+    command: "ruby-install ruby {{ item }}"
+
+- name: Install bundler for rubies
+  become: true
+  with_items:
+   - "2.3.5"
+  shell:
+    creates: "/opt/rubies/ruby-{{ item }}/bin/bundle"
+    command: "source /usr/local/share/chruby/chruby.sh && chruby {{ item }} && gem install bundler"
+
+
 

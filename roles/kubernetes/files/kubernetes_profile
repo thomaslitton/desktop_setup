@@ -33,3 +33,7 @@ klog() {
 klogp() {
   kubectl logs $@
 }
+
+kdelapp() {
+  kubectl delete pod $(kapp $1)
+}

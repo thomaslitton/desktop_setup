@@ -1,1 +1,5 @@
 export PATH=$PATH:~/bin
+alias be="bundle exec"
+alias ber="bundle exec rake"
+
+source /usr/local/share/chruby/chruby.sh
