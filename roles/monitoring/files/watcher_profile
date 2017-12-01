@@ -8,13 +8,13 @@ export WATCHER_REG_URL='https://api.local.watcher/agents'
 
 
 list_hidden_checks() {
-  kubectl exec $(kapp policy-api) -c policy-api bundle exec rake list_hidden_checks
+  kubectl exec $(kapp policy-api | head -1) -c policy-api bundle exec rake list_hidden_checks
 }
 
 hide_check() {
-  kubectl exec $(kapp policy-api) -c policy-api bundle exec rake hide_check_type[$1]
+  kubectl exec $(kapp policy-api | head -1) -c policy-api bundle exec rake hide_check_type[$1]
 }
 
 unhide_check() {
-  kubectl exec $(kapp policy-api) -c policy-api bundle exec rake unhide_check_type[$1]
+  kubectl exec $(kapp policy-api | head -1) -c policy-api bundle exec rake unhide_check_type[$1]
 }

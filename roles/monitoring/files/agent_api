@@ -1,0 +1,19 @@
+export RAILS_ENV=development
+export RABBIT_MQ_USER=admin
+export LOG_LEVEL=debug
+export RABBIT_MQ_ADDRESS=rabbitmq:5671
+export RABBIT_MQ_URL=http://rabbitmq:5680/
+export RABBIT_MQ_PASSWORD=fill in password
+export AGENT_DB_USER=agent_api
+export AGENT_DB_NAME=agent_api
+export AGENT_DB_PORT=5432
+export AGENT_DB_HOST=watcher0
+export AGENT_DB_PASSWORD=fill in password
+
+export SENSU_API_URL=http://watcher0:4567/
+export POLICY_API_URL=http://api.local.watcher/
+
+cp_certs_from_kube() {
+    kubectl get secret watcheradmin-tls -o json | jq -r '.data["watcheradmin-key.pem"]' | base64 -d | sudo tee /var/run/ssl/watcheradmin-key.pem
+    kubectl get secret watcheradmin-tls -o json | jq -r '.data["watcheradmin.pem"]' | base64 -d | sudo tee /var/run/ssl/watcheradmin.pem
+}

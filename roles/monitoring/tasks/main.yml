@@ -18,6 +18,15 @@
     mode: 0755
   become: false
 
+- name: copy bash profile for docker profile
+  copy:
+    src: docker_profile
+    dest: "~{{ansible_user_id}}/.bash_profile.d/agent_api"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+    mode: 0755
+  become: false
+
 - name: Ensure temp download directory exist
   file:
     path: "{{monitoring_root}}"

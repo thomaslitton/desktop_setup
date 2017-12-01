@@ -1,3 +1,5 @@
+export PATH=$PATH:~/.local/bin
+
 for script in ~/.bash_profile.d/*; do
     # skip non-executable snippets
     [ -x "$script" ] || continue
