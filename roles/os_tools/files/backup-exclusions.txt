@@ -1,0 +1,4 @@
+.vagrant.d/boxes/centos-VAGRANTSLASH-7/
+.npm/_cacache/
+.local/share/gnome-boxes/images/
+VirtualBox VMs/

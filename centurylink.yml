@@ -8,8 +8,8 @@
 #    - os_tools
 #    - chrome
 #    - develop_tools
-#    - ruby
-    - nodejs
+    - ruby
+#    - nodejs
 #    - idea
 #     - virtualbox
 #    - kubernetes
