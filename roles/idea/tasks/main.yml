@@ -21,6 +21,8 @@
   file:
     state=directory
     mode=0755
+    owner={{ansible_user_id}}
+    group={{ansible_user_id}}
     dest={{intellij_install_dir}}
   tags: ["packages","intellij"]
 
@@ -29,6 +31,8 @@
     copy: no
     src: "{{intellij_tmp}}"
     dest: "{{intellij_install_dir}}"
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
     creates: "/opt/intellij/ideaIU-{{intellij_version}}/bin/idea.sh"
   tags: ["packages","intellij"]
 
