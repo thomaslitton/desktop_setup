@@ -1,0 +1,2 @@
+export SENSU_API_URL=http://watcher0:4567/
+export LOG_LEVEL=debug
