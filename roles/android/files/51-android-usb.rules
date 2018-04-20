@@ -1,0 +1,11 @@
+# This is my pixel device.  I'm adding this as more of a reminder/example of how to add physical devices via USB
+# Also note you will need to turn this on in the (secret) developer settings on the phone.
+#
+# After this gets installed (or modified:
+# adb kill-server
+# adb start-server
+# (authorize the computer on the device)
+# adb devices
+#
+# This should list the device (as device instead of unauthorized,etc).
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"

@@ -1,0 +1,9 @@
+export RAILS_ENV=development
+export WATCHER_ENV=local
+export DB_USERNAME=policy_api
+export DB_HOST=localhost
+export DB_PORT=5432
+export DB_NAME=policy_api
+export SECRET_KEY_BASE=secret
+export LOG_LEVEL=DEBUG
+export CAM_SERVICE_TOKEN_RESOURCE_OWNERS=fill in value

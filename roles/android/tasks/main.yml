@@ -1,0 +1,36 @@
+- name: copy bash profile for android
+  copy:
+    src: android_profile
+    dest: ~{{ansible_user_id}}/.bash_profile.d
+    owner: {{ansible_user_id}}
+    group: {{ansible_user_id}}
+    mode: 0755
+    force: no
+  become: false
+
+- name: Make signing key shell script
+  copy:
+    src: make_signing_key.sh
+    dest: ~{{ansible_user_id}}/bin
+    owner: {{ansible_user_id}}
+    group: {{ansible_user_id}}
+    mode: 0755
+    force: no
+  become: false
+
+# TODO:  Install android studio/android SDK
+# TODO: Can we automate downloading of needed SDKs?  see https://facebook.github.io/react-native/docs/getting-started.html
+
+- name: (32bit) Dependencies for android build:
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - glibc.i686
+    - glibc-devel.i686
+    - libstdc++.i686
+    - zlib-devel.i686
+    - ncurses-devel.i686
+    - libX11-devel.i686
+    - libXrender.i686
+    - libXrandr.i686
