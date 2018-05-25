@@ -35,3 +35,11 @@
     force: no
   become: false
 
+# front end testing.
+- name: Install QT and webkit
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - qt5
+    - chromedriver
