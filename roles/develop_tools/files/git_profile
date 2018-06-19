@@ -1,0 +1,9 @@
+alias g=git
+
+git_gone_branches() {
+  git branch -vv | awk '/: gone]/{print $1}'
+}
+
+git_clean() {
+  git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
+}
