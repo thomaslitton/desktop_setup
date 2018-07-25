@@ -25,3 +25,18 @@ alias admin_check_dev='admin_check -s http://uc1mondk8smas02:4567'
 alias admin_check_int='admin_check -s http://uc1mondk8smas02:14567'
 alias admin_check_prod='admin_check -s http://uc1monpk8smas01:4567'
 alias admin_check='~/bin/admin_check.rb -p <(echo -e <private key>)'
+
+alias influxdb_local='kubectl --context local exec -ti influxdb-0 -- influx'
+alias influxdb_dev='kubectl --context dev exec -ti influxdb-0 -- influx'
+alias influxdb_int='kubectl --context int exec -ti influxdb-0 -- influx'
+alias influxdb_prod='kubectl --context prod exec -ti influxdb-0 -- influx'
+
+alias agentdb_local='kubectl --context local exec -ti postgres-agentdb-0 -- psql -U postgres agent_api'
+alias agentdb_dev='kubectl --context dev exec -ti postgres-agentdb-0 -- psql -U postgres agent_api'
+alias agentdb_int='kubectl --context int exec -ti postgres-agentdb-0 -- psql -U postgres agent_api'
+alias agentdb_prod='kubectl --context prod exec -ti postgres-agentdb-0 -- psql -U postgres agent_api'
+
+alias policydb_local='kubectl --context local exec -ti postgres-policydb-0 -- psql -U postgres policy_api'
+alias policydb_dev='kubectl --context dev exec -ti postgres-policydb-0 -- psql -U postgres policy_api'
+alias policydb_int='kubectl --context int exec -ti postgres-policydb-0 -- psql -U postgres policy_api'
+alias policydb_prod='kubectl --context prod exec -ti postgres-policydb-0 -- psql -U postgres policy_api'
