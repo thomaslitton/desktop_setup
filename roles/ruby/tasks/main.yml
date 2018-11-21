@@ -17,9 +17,9 @@
     - rubygem-json
 
 - name: Install Bundler.
-  gem: 
-    name: bundler 
-    state: present 
+  gem:
+    name: bundler
+    state: present
     user_install: no
 
 - name: install common ruby deps
@@ -40,8 +40,8 @@
 
 - name: Download chruby repo config
   get_url:
-    url: "https://copr.fedorainfracloud.org/coprs/postmodern/chruby/repo/fedora-26/postmodern-chruby-fedora-26.repo"
-    dest: "/etc/yum.repos.d/postmodern-chruby-fedora-26.repo"
+    url: "https://copr.fedorainfracloud.org/coprs/postmodern/chruby/repo/fedora-28/postmodern-chruby-fedora-28.repo"
+    dest: "/etc/yum.repos.d/postmodern-chruby-fedora-28.repo"
 
 - name: Install chruby
   dnf:
@@ -63,7 +63,7 @@
 - name: Install additional rubies
   become: true
   with_items:
-    - "2.3.5"
+    - "2.3"
   shell:
     creates: "/opt/rubies/ruby-{{ item }}/bin/ruby"
     command: "ruby-install ruby {{ item }}"
@@ -71,7 +71,7 @@
 - name: Install bundler for rubies
   become: true
   with_items:
-   - "2.3.5"
+   - "2.3"
   shell:
     creates: "/opt/rubies/ruby-{{ item }}/bin/bundle"
     command: "source /usr/local/share/chruby/chruby.sh && chruby {{ item }} && gem install bundler"
