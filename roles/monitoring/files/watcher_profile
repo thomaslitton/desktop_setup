@@ -1,5 +1,8 @@
 export EB_TOKEN="set token here"
 
+export SOPS_GPG_EXEC=gpg2
+export EDITOR=vim
+
 export AUTH_TOKEN=$EB_TOKEN
 export WORKSPACE='thomaslitton'
 export INSTANCE='MyPC'

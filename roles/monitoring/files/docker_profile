@@ -8,3 +8,7 @@ export DOCKER_TOOLBOX_INSTALL_PATH=
 function dbl() {
   docker build --tag registry.watcher.ctl.io:443/$1:local .;
 }
+
+function dblc() {
+  docker build --no-cache --tag registry.watcher.ctl.io:443/$1:local .;
+}

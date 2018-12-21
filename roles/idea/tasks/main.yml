@@ -9,6 +9,9 @@
   register: intellij_releases_response
   tags: ["packages","intellij"]
 
+- debug:
+    msg: "idea response: {{intellij_releases_response}}"
+
 - set_fact:
     intellij_version: "{{ intellij_releases_response.json.IIU.0.version }}"
   tags: ["packages","intellij"]
