@@ -34,7 +34,8 @@
     - readline-devel
     - libyaml-devel
     - openssl-devel
-    - autoconf automake
+    - autoconf 
+    - automake
     - libtool
     - sqlite-devel
 
