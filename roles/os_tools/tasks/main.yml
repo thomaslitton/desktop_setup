@@ -8,7 +8,7 @@
 - name: install gnome-tweak-tool
   dnf:
     name: gnome-tweak-tool
-    state: latest    
+    state: latest
 
 - name: install keepass
   dnf:
@@ -18,6 +18,41 @@
 - name: install jq
   dnf:
     name: jq
+    state: latest
+
+- name: install strongswan
+  dnf:
+    name: strongswan
+    state: latest
+
+- name: install remmina
+  dnf:
+    name: remmina
+    state: latest
+
+- name: install clamav
+  dnf:
+    name: clamav
+    state: latest
+
+- name: install azure-cli
+  dnf:
+    name: azure-cli
+    state: latest
+
+- name: install net-snmp-utils
+  dnf:
+    name: net-snmp-utils
+    state: latest
+
+- name: install inkscape
+  dnf:
+    name: inkscape
+    state: latest
+
+- name: install dolphin
+  dnf:
+    name: dolphin
     state: latest
 
 - name: install jq

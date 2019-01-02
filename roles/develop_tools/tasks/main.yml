@@ -64,3 +64,26 @@
   with_items:
     - qt5
     - chromedriver
+
+- name: Install Lua and OpenResty
+  dnf:
+    name: ["openresty","lua","luarocks"]
+    state: latest
+
+- name: Postgres
+  dnf:
+    name: ["postgresql"]
+    state: latest
+
+# Python
+- name: PyPy
+  dnf:
+    name: ["pypy"]
+    state: latest
+
+# Python
+- name: Sops
+  dnf:
+    name: ["sops"]
+    state: latest
+
