@@ -45,6 +45,28 @@
     force: no
   become: false
 
+- name: Download Packer
+  get_url:
+    url: "{{ packer_zip_url }}"
+    dest: "{{ packer_dest }}"
+
+- name: Unarchive Packer
+  unarchive:
+    src: "{{ packer_dest }}"
+    dest: "/usr/local/bin"
+    creates: "/usr/local/bin/packer"
+
+- name: copy bash profile for git
+  copy:
+    src: git_profile
+    dest: ~{{ansible_user_id}}/.bash_profile.d
+    owner: {{ansible_user_id}}
+    group: {{ansible_user_id}}
+    mode: 0755
+    force: no
+  become: false
+
+
 # front end testing.
 - name: Install QT and webkit
   dnf:
