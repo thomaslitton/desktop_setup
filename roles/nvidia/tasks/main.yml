@@ -1,0 +1,13 @@
+- name: fedora workstation repo
+  dnf:
+    name: "fedora-workstation-repositories"
+    state: latest
+
+- name: Enable nvidia driver repo
+  command: "dnf config-manager --set-enabled rpmfusion-nonfree-nvidia-driver"
+
+- name: fedora workstation repo
+  dnf:
+    name: [xorg-x11-drv-nvidia,akmod-nvidia,xorg-x11-drv-nvidia-cuda]
+    state: latest
+

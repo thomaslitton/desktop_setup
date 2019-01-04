@@ -25,7 +25,7 @@
 
 - name: Install VirtualBox
   dnf:
-    name: "VirtualBox-5.1"
+    name: "VirtualBox-6.0"
     state: present
 
 - name: Rebuild kernel moduels

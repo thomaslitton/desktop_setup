@@ -35,11 +35,6 @@
     name: clamav
     state: latest
 
-- name: install azure-cli
-  dnf:
-    name: azure-cli
-    state: latest
-
 - name: install net-snmp-utils
   dnf:
     name: net-snmp-utils
