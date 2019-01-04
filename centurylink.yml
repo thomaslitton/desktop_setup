@@ -8,9 +8,9 @@
 #    - os_tools
 #    - chrome
 #    - develop_tools
-    - ruby
+#    - ruby
 #    - nodejs
 #    - idea
-#     - virtualbox
+#    - virtualbox
 #    - kubernetes
-#    - monitoring
+    - monitoring

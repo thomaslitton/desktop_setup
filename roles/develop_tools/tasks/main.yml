@@ -1,5 +1,16 @@
 ---
 
+- name: "enable repos"
+  copy:
+    src: "{{ item }}"
+    dest: /etc/yum.repos.d/
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - azure-cli.repo
+    - openresty.repo
+
 # Vagrant
 
 - name: Ensure temp download directory exist
