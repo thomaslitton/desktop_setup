@@ -86,3 +86,8 @@
   dnf:
     name: ["pypy"]
     state: latest
+
+- name: pipenv
+  dnf:
+    name: ["pipenv"]
+    state: latest

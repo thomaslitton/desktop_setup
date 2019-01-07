@@ -9,7 +9,7 @@
     mode: 0644
   with_items:
     - slack.repo
-
+    
 - name: install vim
   dnf:
     name: vim
