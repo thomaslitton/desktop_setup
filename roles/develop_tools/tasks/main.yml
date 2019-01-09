@@ -81,6 +81,12 @@
     name: ["postgresql"]
     state: latest
 
+- name: Postgres
+  dnf:
+    name: ["s3cmd"]
+    state: latest
+
+
 # Python
 - name: PyPy
   dnf:
