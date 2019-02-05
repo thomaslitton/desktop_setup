@@ -12,5 +12,6 @@
 #    - nodejs
 #    - idea
 #    - virtualbox
+    - qemu
 #    - kubernetes
     - monitoring

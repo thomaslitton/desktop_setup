@@ -1,0 +1,12 @@
+---
+- name: Install qemu and related tools
+  dnf:
+    name:
+      - qemu
+      - qemu-kvm
+      - qemu-img
+      - libvirt
+      - libvirt-python
+      - libvirt-client
+      - virt-install
+    state: latest

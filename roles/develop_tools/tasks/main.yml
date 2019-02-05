@@ -34,12 +34,11 @@
   unarchive:
     src: "{{ vault_dest }}"
     dest: "/usr/local/bin"
-    creates: "/usr/local/bin/vault"
 
 - name: copy bash profile for vault profile
   copy:
     src: vault_profile
-    owner: "{{ansible_user_id}}"    
+    owner: "{{ansible_user_id}}"
     group: "{{ansible_user_id}}"
     mode: 0755
     force: no
@@ -65,7 +64,6 @@
   unarchive:
     src: "{{ packer_dest }}"
     dest: "/usr/local/bin"
-    creates: "/usr/local/bin/packer"
 
 # front end testing.
 - name: Install QT and webkit
