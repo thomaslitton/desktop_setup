@@ -12,6 +12,7 @@
 #    - nodejs
 #    - idea
 #    - virtualbox
-    - qemu
+#    - qemu
 #    - kubernetes
-    - monitoring
+     - golang
+#    - monitoring

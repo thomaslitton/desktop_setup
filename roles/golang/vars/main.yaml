@@ -1,0 +1,4 @@
+go_version: "1.12.7"
+go_tarball: "go{{go_version}}.linux-amd64.tar.gz"
+go_download_location: "https://dl.google.com/go/{{go_tarball}}"
+go_tarball_checksum: "sha256:66d83bfb5a9ede000e33c6579a91a29e6b101829ad41fffb5c5bb6c900e109d9"

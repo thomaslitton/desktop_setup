@@ -1,0 +1,28 @@
+---
+- name: Download the Go tarball
+  get_url:
+    url: "{{ go_download_location }}"
+    dest: "/tmp/{{ go_tarball }}"
+    checksum: "{{ go_tarball_checksum }}"
+
+- name: Extract the Go tarball if Go is not yet installed or not the desired version
+  unarchive:
+    src: "/tmp/{{ go_tarball }}"
+    dest: "/usr/local"
+    copy: no
+
+- name: Ensure go workspace dir exists and main src repo for internal projects
+  file:
+    state: directory
+    path: "~{{install_user}}/projects/golang/src/github.com/CenturyLink"
+  become: false
+
+- name: copy bash profile for go
+  copy:
+    src: "go_profile"
+    owner: "{{install_user}}"
+    group: "{{install_user}}"
+    mode: 0755
+    force: no
+    dest: "~{{install_user}}/.bash_profile.d"
+  become: false
