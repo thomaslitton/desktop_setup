@@ -14,7 +14,7 @@
 - name: Ensure go workspace dir exists and main src repo for internal projects
   file:
     state: directory
-    path: "~{{install_user}}/projects/golang/src/github.com/CenturyLink"
+    path: "~{{install_user}}/golang"
   become: false
 
 - name: copy bash profile for go

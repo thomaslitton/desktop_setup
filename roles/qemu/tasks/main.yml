@@ -9,4 +9,11 @@
       - libvirt-python
       - libvirt-client
       - virt-install
+      - vagrant-libvirt
     state: latest
+
+- name: Install Vagrant plugins
+  become: True
+  shell: "vagrant plugin install {{ item.name }}"
+  with_items:
+    -vagrant-libvirt

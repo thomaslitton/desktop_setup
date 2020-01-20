@@ -5,6 +5,7 @@
   vars:
     test: test
   roles:
+    - gcloud
 #    - os_tools
 #    - chrome
 #    - develop_tools
@@ -14,5 +15,5 @@
 #    - virtualbox
 #    - qemu
 #    - kubernetes
-     - golang
+#    - golang
 #    - monitoring

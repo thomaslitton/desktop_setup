@@ -1,0 +1,34 @@
+---
+
+- name: "dnf | ensure Google sdk repo present"
+  copy: src=google-cloud-sdk.repo
+    dest=/etc/yum.repos.d/
+    owner=root group=root mode=0644
+
+- name: "dnf | ensure Google sdk present"
+  dnf: name=google-cloud-sdk
+
+- name: Find out what the remote machine's mounts are
+  slurp:
+    src: "{{gcloud_key}}"
+  register: gcloud_json_b64
+
+- name: "decode gcloud json"
+  set_fact:
+    gcloud_json: "{{gcloud_json_b64['content'] | b64decode}}"
+
+
+- name: Activate service account
+  shell: "gcloud config set account {{ gcloud_json | json_query('client_email') }}"
+
+- name: Activate service account
+  shell: "gcloud auth activate-service-account {{ gcloud_json | json_query('client_email') }} --key-file {{ gcloud_key }}"
+
+- debug:
+    msg: "{{ gcloud_json | json_query('project_id') }}"
+
+- name: Sets default project
+  shell: "gcloud config set core/project {{ gcloud_json | json_query('project_id') }}"
+
+- name: Sets default project
+  shell: "gcloud config set compute/zone {{zone}}"
