@@ -12,3 +12,11 @@ function dbl() {
 function dblc() {
   docker build --no-cache --tag registry.watcher.ctl.io:443/$1:local .;
 }
+
+function dblg() {
+  docker build --tag gcr.io/managed-services-anywhere/$1:local .;
+}
+
+function dblgc() {
+  docker build --no-cache --tag gcr.io/managed-services-anywhere/$1:local .;
+}
