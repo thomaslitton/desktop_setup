@@ -79,7 +79,7 @@
     name: ["postgresql"]
     state: latest
 
-- name: Postgres
+- name: s3cmd
   dnf:
     name: ["s3cmd"]
     state: latest

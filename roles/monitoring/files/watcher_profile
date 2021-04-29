@@ -27,7 +27,7 @@ alias admin_check_local='admin_check -s http://watcher0:4567'
 alias admin_check_dev='admin_check -s http://uc1mondk8smas02:4567'
 alias admin_check_int='admin_check -s http://uc1mondk8smas02:14567'
 alias admin_check_prod='admin_check -s http://uc1monpk8smas01:4567'
-alias admin_check='~/bin/admin_check.rb -p <(echo -e <private key>)'
+alias admin_check='~/bin/ admin_check.rb -p <(echo -e $(vault read -field=key secret/certs/admin_check))'
 
 alias influxdb_local='kubectl --context local exec -ti influxdb-0 -- influx'
 alias influxdb_dev='kubectl --context dev exec -ti influxdb-0 -- influx'
