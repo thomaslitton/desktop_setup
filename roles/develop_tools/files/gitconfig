@@ -1,0 +1,19 @@
+[user]
+  name = thomas.litton
+  email = thomas.litton@centurylink.com
+[credential]
+  helper = cache --timeout=43200
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+
+[diff "sopsdiffer"]
+  textconv = sops -d
+[core]
+  autocrlf = input

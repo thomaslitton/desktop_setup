@@ -55,6 +55,16 @@
     dest: "~{{ansible_user_id}}/.bash_profile.d"
   become: false
 
+- name: copy git config file
+  copy:
+    src: gitconfig
+    owner: "{{ansible_user_id}}"
+    group: "{{ansible_user_id}}"
+    mode: 0644
+    force: no
+    dest: "~/.gitconfig"
+  become: false
+
 - name: Download Packer
   get_url:
     url: "{{ packer_zip_url }}"
