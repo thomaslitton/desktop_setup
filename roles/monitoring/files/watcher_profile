@@ -22,6 +22,9 @@ unhide_check() {
   kubectl exec $(kapp policy-api | head -1) -c policy-api bundle exec rake unhide_check_type[$1]
 }
 
+spruce_local() {
+  spruce merge /home/thomas.litton/projects/monitoring/mon-infrastructure/appliance/ansible/roles/local_stack/files/global_vars.yaml /home/thomas.litton/projects/monitoring/mon-infrastructure/appliance/ansible/roles/local_stack/files/    $1_vars.spruce.yaml
+}
 
 alias admin_check_local='admin_check -s http://watcher0:4567'
 alias admin_check_dev='admin_check -s http://uc1mondk8smas02:4567'

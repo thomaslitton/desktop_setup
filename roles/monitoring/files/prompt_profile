@@ -1,0 +1,9 @@
+k8s_info() {
+  kubectl config view --minify --output 'jsonpath={.current-context}' 2> /dev/null
+}
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+}
+
+PS1="\[\e[01;33m\][\$(k8s_info)]\[\e[33m\]\$(parse_git_branch) \[\e[1;92m\][\w] $>\[\e[96m\] "
