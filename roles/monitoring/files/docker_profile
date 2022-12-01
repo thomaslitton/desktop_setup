@@ -6,7 +6,8 @@ export DOCKER_TLS_VERIFY=
 export DOCKER_TOOLBOX_INSTALL_PATH=
 
 function dbl() {
-  docker build --tag registry.watcher.ctl.io:443/$1:local .;
+  docker build --tag gcr.io/managed-services-anywhere/$1:local .;
+  ssh tomlitton@localstack0 -- sudo /home/tomlitton/containerd-import.sh gcr.io/managed-services-anywhere/$1:local
 }
 
 function dblc() {
